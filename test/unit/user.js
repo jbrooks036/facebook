@@ -3,11 +3,11 @@
 
 'use strict';
 
-var expect    = require('chai').expect,
+var // expect    = require('chai').expect,
     User      = require('../../app/models/user'),
     dbConnect = require('../../app/lib/mongodb'),
     cp        = require('child_process'),
-    db        = 'template-test';
+    db        = 'facebook';
 
 describe('User', function(){
   before(function(done){
@@ -22,11 +22,29 @@ describe('User', function(){
     });
   });
 
+/*
   describe('constructor', function(){
-    it('should create a new User object', function(){
+    it('should create a new User object', function(done){
       var u = new User();
       expect(u).to.be.instanceof(User);
+      expect(u.email).to.equal('bob@aol.com');
+      // expect(u.phone).to.equal('333-222-4444');
+      // expect(u.tagline).to.equal('good ole bob');
+      done();
     });
   });
+*/
+
+  describe('find', function(){
+    it('should return an array of publicly visible users', function(done){
+      User.find({isVisible:true}, function(err, users){
+        console.log(users);
+        // expect(users).to.have.length(2);
+        done();
+      });
+    });
+  });
+
+
 });
 

@@ -41,3 +41,41 @@ exports.authenticate = function(req, res){
   });
 };
 
+exports.edit = function(req, res){
+  res.render('users/edit');
+};
+
+exports.update = function(req, res){
+  res.locals.user.save(req.body, function(){
+    res.redirect('/profile');
+  });
+};
+
+exports.profile = function(req, res){
+  res.render('users/profile');
+};
+
+exports.index = function(req, res){
+  User.find({isVisible:true}, function(err, users){
+    console.log('CONTROLLER-INDEX users from find: ', users);
+    res.render('users/index', {users:users});
+  });
+};
+
+exports.client = function(req, res){
+  User.findOne({email:req.params.email, isVisible:true}, function(err, client){
+    if(client){
+      res.render('users/client', {client:client});
+    }else{
+      res.redirect('/users');
+    }
+  });
+};
+
+exports.message = function(req, res){
+  User.findById(req.params.userId, function(err, receiver){
+    res.locals.user.send(receiver, req.body, function(){
+      res.redirect('/users/' + receiver.email);
+    });
+  });
+};
