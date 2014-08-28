@@ -51,8 +51,8 @@ exports.update = function(req, res){
   });
 };
 
-exports.profile = function(req, res){
-  res.render('users/profile');
+exports.show = function(req, res){
+  res.render('users/show');
 };
 
 exports.index = function(req, res){
@@ -78,4 +78,5 @@ exports.message = function(req, res){
       res.redirect('/users/' + receiver.email);
     });
   });
+
 };

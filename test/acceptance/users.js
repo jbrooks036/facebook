@@ -71,9 +71,8 @@ describe('users', function(){
     });
   });
 
-/*
   describe('post /messages/000000000000000000000001', function(){
-    it('should show a specific user', function(done){
+    it('should post a message to a specific user', function(done){
       request(app)
       .post('/message/000000000000000000000002')
       .set('cookie', cookie)
@@ -85,7 +84,6 @@ describe('users', function(){
       });
     });
   });
-*/
 
 });
 
