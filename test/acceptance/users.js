@@ -71,15 +71,16 @@ describe('users', function(){
     });
   });
 
-  describe('post /messages/000000000000000000000001', function(){
+  describe('post /message/3', function(){
     it('should post a message to a specific user', function(done){
       request(app)
       .post('/message/000000000000000000000002')
       .set('cookie', cookie)
-      .send('mtype=text&message=hey')
+      .send('mtype=text&message=text-hey')
       .end(function(err, res){
         expect(res.status).to.equal(302);
         expect(res.headers.location).to.equal('/users/sam@aol.com');
+
         done();
       });
     });

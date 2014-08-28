@@ -40,7 +40,7 @@ describe('User', function(){
   describe('.find', function(){
     it('should find users who are public', function(done){
       User.find({isVisible:true}, function(err, users){
-        expect(users).to.have.length(2);
+        expect(users).to.have.length(4);
         done();
       });
     });
@@ -59,9 +59,21 @@ describe('User', function(){
     it('should send a text message to a user', function(done){
       User.findById('000000000000000000000001', function(err, sender){
         User.findById('000000000000000000000002', function(err, receiver){
-          sender.send(receiver, {mtype:'text', message:'yo 2!'}, function(err, response){
-            console.log('#send test - response: ', response);
+          sender.send(receiver, {mtype:'text', message:'text yo!'}, function(err, response){
+            console.log('#send text test - err: ', err);
             expect(response.sid).to.be.ok;
+            done();
+          });
+        });
+      });
+    });
+
+    it('should send an email to a user', function(done){
+      User.findById('000000000000000000000004', function(err, sender){
+        User.findById('000000000000000000000005', function(err, receiver){
+          sender.send(receiver, {mtype:'email', message:'email yo!'}, function(err, response){
+            console.log('#send email test - response: ', response);
+            expect(response.id).to.be.ok;
             done();
           });
         });
