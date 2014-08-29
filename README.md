@@ -2,6 +2,8 @@
 ### Code Badges
 build status icon
 coverage status icon
+[![Build Status](https://travis-ci.org/jbrooks036/facebook.svg?branch=master)](https://travis-ci.org/jbrooks036/facebook)
+[![Coverage Status](https://coveralls.io/repos/jbrooks036/facebook/badge.png)](https://coveralls.io/r/jbrooks036/facebook)
 
 ### About
 write a description about your project
